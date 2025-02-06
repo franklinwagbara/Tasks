@@ -1,55 +1,90 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 
 public class FibonacciGeneratorTests
 {
     [TestFixture]
-    public class GenerateFibonacciTests
+    public class GenerateFibonacciSeriesTests
     {
         [Test]
-        public void GenerateFibonacci_ValidInput_ReturnsCorrectSequence()
+        public void GenerateFibonacciSeries_ValidInput_ReturnsCorrectSeries()
         {
-            List<int> expected = new List<int> { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 };
-            List<int> actual = FibonacciGenerator.GenerateFibonacci(10);
-            Assert.That(actual, Is.EqualTo(expected));
+            // Arrange
+            int n = 10;
+            List<int> expectedSeries = new List<int> { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 };
+
+            // Act
+            List<int> actualSeries = FibonacciGenerator.GenerateFibonacciSeries(n);
+
+            // Assert
+            Assert.That(actualSeries, Is.EqualTo(expectedSeries));
         }
 
         [Test]
-        public void GenerateFibonacci_SingleTerm_ReturnsZero()
+        public void GenerateFibonacciSeries_ZeroInput_ReturnsEmptyList()
         {
-            List<int> expected = new List<int> { 0 };
-            List<int> actual = FibonacciGenerator.GenerateFibonacci(1);
-            Assert.That(actual, Is.EqualTo(expected));
+            // Arrange
+            int n = 0;
+            List<int> expectedSeries = new List<int>();
+
+            // Act
+            List<int> actualSeries = FibonacciGenerator.GenerateFibonacciSeries(n);
+
+            // Assert
+            Assert.That(actualSeries, Is.EqualTo(expectedSeries));
         }
 
         [Test]
-        public void GenerateFibonacci_TwoTerms_ReturnsZeroAndOne()
+        public void GenerateFibonacciSeries_OneInput_ReturnsListWithZero()
         {
-            List<int> expected = new List<int> { 0, 1 };
-            List<int> actual = FibonacciGenerator.GenerateFibonacci(2);
-            Assert.That(actual, Is.EqualTo(expected));
+            // Arrange
+            int n = 1;
+            List<int> expectedSeries = new List<int> { 0 };
+
+            // Act
+            List<int> actualSeries = FibonacciGenerator.GenerateFibonacciSeries(n);
+
+            // Assert
+            Assert.That(actualSeries, Is.EqualTo(expectedSeries));
         }
 
         [Test]
-        public void GenerateFibonacci_ZeroTerms_ReturnsNull()
+        public void GenerateFibonacciSeries_TwoInput_ReturnsListWithZeroAndOne()
         {
-            List<int> actual = FibonacciGenerator.GenerateFibonacci(0);
-            Assert.That(actual, Is.Null);
+            // Arrange
+            int n = 2;
+            List<int> expectedSeries = new List<int> { 0, 1 };
+
+            // Act
+            List<int> actualSeries = FibonacciGenerator.GenerateFibonacciSeries(n);
+
+            // Assert
+            Assert.That(actualSeries, Is.EqualTo(expectedSeries));
         }
 
         [Test]
-        public void GenerateFibonacci_NegativeInput_ReturnsNull()
+        public void GenerateFibonacciSeries_NegativeInput_ThrowsArgumentException()
         {
-            List<int> actual = FibonacciGenerator.GenerateFibonacci(-5);
-            Assert.That(actual, Is.Null);
+            // Arrange
+            int n = -1;
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => FibonacciGenerator.GenerateFibonacciSeries(n));
         }
 
         [Test]
-        public void GenerateFibonacci_LargeInput_ReturnsCorrectSequence()
+        public void GenerateFibonacciSeries_LargeInput_ReturnsCorrectSeries()
         {
-            List<int> actual = FibonacciGenerator.GenerateFibonacci(5);
-            List<int> expected = new List<int> { 0, 1, 1, 2, 3 };
-            Assert.That(actual, Is.EqualTo(expected));
+            // Arrange
+            int n = 15;
+            List<int> expectedSeries = new List<int> { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377 };
+
+            // Act
+            List<int> actualSeries = FibonacciGenerator.GenerateFibonacciSeries(n);
+
+            // Assert
+            Assert.That(actualSeries, Is.EqualTo(expectedSeries));
         }
     }
 }

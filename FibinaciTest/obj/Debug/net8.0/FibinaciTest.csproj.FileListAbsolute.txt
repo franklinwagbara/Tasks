@@ -103,3 +103,4 @@ C:\Users\Franklin Wagbara\source\repos\Tasks\FibinaciTest\obj\Debug\net8.0\refin
 C:\Users\Franklin Wagbara\source\repos\Tasks\FibinaciTest\obj\Debug\net8.0\FibinaciTest.pdb
 C:\Users\Franklin Wagbara\source\repos\Tasks\FibinaciTest\obj\Debug\net8.0\FibinaciTest.genruntimeconfig.cache
 C:\Users\Franklin Wagbara\source\repos\Tasks\FibinaciTest\obj\Debug\net8.0\ref\FibinaciTest.dll
+C:\Users\Franklin Wagbara\source\repos\Tasks\FibinaciTest\obj\Debug\net8.0\FibinaciTest.sourcelink.json

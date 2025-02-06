@@ -3,32 +3,36 @@ using System.Collections.Generic;
 
 public class FibonacciGenerator
 {
-    /// <summary>
-    /// Generates a Fibonacci sequence up to a specified number of terms.
-    /// </summary>
-    /// <param name="n">The number of Fibonacci terms to generate.</param>
-    /// <returns>A list containing the Fibonacci sequence, or null if the input is invalid.</returns>
-    public static List<int> GenerateFibonacci(int n)
+    public static List<int> GenerateFibonacciSeries(int n)
     {
-        // Input validation: Check for non-positive input
-        if (n <= 0)
+        // Input validation: Check for non-negative input
+        if (n < 0)
         {
-            return null; // Or throw an exception, depending on desired behavior
+            throw new ArgumentException("The number of Fibonacci numbers to generate must be non-negative.");
         }
 
         List<int> fibonacciSeries = new List<int>();
 
-        // Base cases for the first two Fibonacci numbers
-        if (n >= 1)
+        if (n == 0)
         {
-            fibonacciSeries.Add(0);
-        }
-        if (n >= 2)
-        {
-            fibonacciSeries.Add(1);
+            return fibonacciSeries; // Return an empty list if n is 0
         }
 
-        // Generate the remaining Fibonacci numbers
+        fibonacciSeries.Add(0); // First Fibonacci number
+
+        if (n == 1)
+        {
+            return fibonacciSeries;
+        }
+
+        fibonacciSeries.Add(1); // Second Fibonacci number
+
+        if (n == 2)
+        {
+            return fibonacciSeries;
+        }
+
+        // Generate the remaining Fibonacci numbers iteratively
         for (int i = 2; i < n; i++)
         {
             int nextFibonacci = fibonacciSeries[i - 1] + fibonacciSeries[i - 2];
@@ -40,24 +44,24 @@ public class FibonacciGenerator
 
     public static void Main(string[] args)
     {
-        Console.Write("Enter the number of Fibonacci terms to generate: ");
+        Console.Write("Enter the number of Fibonacci numbers to generate: ");
         string input = Console.ReadLine();
 
         if (int.TryParse(input, out int n))
         {
-            List<int> fibonacciSeries = GenerateFibonacci(n);
-
-            if (fibonacciSeries != null)
+            try
             {
+                List<int> fibonacciSeries = GenerateFibonacciSeries(n);
+
                 Console.WriteLine("Fibonacci Series:");
                 foreach (int fibonacciNumber in fibonacciSeries)
                 {
                     Console.WriteLine(fibonacciNumber);
                 }
             }
-            else
+            catch (ArgumentException ex)
             {
-                Console.WriteLine("Invalid input. Please enter a positive integer.");
+                Console.WriteLine("Error: " + ex.Message);
             }
         }
         else

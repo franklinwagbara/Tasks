@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FibinaciTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+000e25c9f7b303ea1e26fedb823fc160b7b0f873")]
 [assembly: System.Reflection.AssemblyProductAttribute("FibinaciTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FibinaciTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
